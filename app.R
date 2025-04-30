@@ -6,7 +6,7 @@ library(jsonlite)
 library(bslib)
 
 # Initialize LLM chat object using Claude
-llm_chat <- chat_claude(
+llm_chat <- chat_anthropic(
   model = "claude-3-7-sonnet-latest",
   system_prompt = "You are a knowledgeable assistant that provides concise, interesting facts about geographical locations. When given location data, provide a brief overview of the location, including historical significance, cultural importance, or interesting facts if applicable. Keep your response conversational and engaging."
 )
@@ -39,7 +39,8 @@ server <- function(input, output, session) {
         position = "top-right",
         placeholder = "Search for a location...",
         collapsed = FALSE
-      )
+      ) |>
+      add_reset_control()
   })
 
   # React to geocoding results
