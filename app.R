@@ -15,6 +15,7 @@ llm_chat <- chat_anthropic(
 ui <- page_sidebar(
   padding = 0,
   sidebar = sidebar(
+    width = 350,
     title = "AI-powered Location Explorer",
     p(
       "Search for a location with the map's geocoder, and I'll tell you interesting facts about it!"
@@ -39,8 +40,7 @@ server <- function(input, output, session) {
         position = "top-right",
         placeholder = "Search for a location...",
         collapsed = FALSE
-      ) |>
-      add_reset_control()
+      )
   })
 
   # React to geocoding results
